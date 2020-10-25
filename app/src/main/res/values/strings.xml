@@ -1,0 +1,16 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">GithubUser</string>
+    <string name="search">Search</string>
+    <string name="company">Company</string>
+    <string name="repository">Repository</string>
+    <string name="location">Location</string>
+    <string name="tab_followers">Followers</string>
+    <string name="tab_following">Following</string>
+    <string name="avatar">Avatar</string>
+    <string name="no_following">No following</string>
+    <string name="no_followers">No followers</string>
+    <string name="null_username">No user with that username</string>
+    <string name="welcome_text">Welcome\nTap search button to find other users…</string>
+    <string name="load_failed">Loading data failed</string>
+    <string name="change_lang">Change language settings</string>
+</resources>

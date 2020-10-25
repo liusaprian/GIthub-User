@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">GithubUser</string>
+    <string name="search">Cari</string>
+    <string name="company">Perusahaan</string>
+    <string name="repository">Repositori</string>
+    <string name="location">Lokasi</string>
+    <string name="tab_followers">Pengikut</string>
+    <string name="tab_following">Mengikuti</string>
+    <string name="avatar">Avatar</string>
+    <string name="no_following">Tidak mengikuti siapapun</string>
+    <string name="no_followers">Tidak ada pengikut</string>
+    <string name="null_username">Username tidak ditemukan</string>
+    <string name="welcome_text">Hallooo\nTemui user lain dengan tekan menu cari…</string>
+    <string name="load_failed">Gagal mengambil data</string>
+    <string name="change_lang">Ganti pengaturan bahasa</string>
+</resources>
