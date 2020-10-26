@@ -1,12 +1,11 @@
 package com.example.githubuser
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -23,12 +22,13 @@ class FollowingFragment(private val username: String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_following, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        retainInstance = true
 
         showLoading(true)
 
@@ -42,10 +42,10 @@ class FollowingFragment(private val username: String) : Fragment() {
     private fun getFollowing(username: String) {
         val client = AsyncHttpClient()
         val url = "https://api.github.com/users/$username/following"
-        client.addHeader("Authorization", "token 77003919eca2d2b24b3ff9036a5fa20eaabc1ca8 ")
+        client.addHeader("Authorization", "")
         client.addHeader("User-Agent", "request")
 
-        client.get(url, object: AsyncHttpResponseHandler() {
+        client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<out Header>?,
@@ -54,7 +54,7 @@ class FollowingFragment(private val username: String) : Fragment() {
                 val stringJson = String(responseBody)
                 val jsonArray = JSONArray(stringJson)
 
-                for(i in 0 until jsonArray.length()) {
+                for (i in 0 until jsonArray.length()) {
                     val jsonObject = jsonArray.getJSONObject(i)
 
                     val userItem = User()
@@ -63,7 +63,7 @@ class FollowingFragment(private val username: String) : Fragment() {
 
                     listFollowing.add(userItem)
                 }
-                if(listFollowing.isEmpty()) emptyList(true)
+                if (listFollowing.isEmpty()) emptyList(true)
                 else emptyList(false)
             }
 
@@ -93,13 +93,12 @@ class FollowingFragment(private val username: String) : Fragment() {
     }
 
     private fun emptyList(state: Boolean) {
-        if(state) {
+        if (state) {
             following_text.text = getString(R.string.no_following)
             showText(true)
             showList(false)
             showLoading(false)
-        }
-        else {
+        } else {
             followingAdapter.setUser(listFollowing)
             showList(true)
             showText(false)

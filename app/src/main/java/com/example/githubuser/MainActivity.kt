@@ -4,7 +4,6 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Spannable
@@ -15,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var userAdapter: UserAdapter
     private lateinit var mainViewModel: MainViewModel
-    private lateinit var savedQuery: String
+    private var savedQuery: String? = null
+
+    companion object {
+        private const val SAVED_QUERY = "saved_query"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,12 @@ class MainActivity : AppCompatActivity() {
             this,
             ViewModelProvider.NewInstanceFactory()
         ).get(MainViewModel::class.java)
+
+        if(savedInstanceState != null) {
+            val previousQuery = savedInstanceState.getString(SAVED_QUERY)
+            showList()
+            if(previousQuery != null) mainViewModel.setUser(previousQuery)
+        }
 
         mainViewModel.getUser().observe(this, Observer { listUser ->
             if (listUser != null) userAdapter.setUser(listUser)
@@ -93,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString("query", savedQuery)
+        outState.putString(SAVED_QUERY, savedQuery)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

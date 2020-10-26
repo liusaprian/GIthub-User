@@ -146,6 +146,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabTextColor="@android:color/white"
+            app:tabGravity="fill"
+            app:tabMaxWidth="0dp"
             app:tabIndicatorColor="@android:color/white"
             android:background="?attr/colorPrimary"/>
         

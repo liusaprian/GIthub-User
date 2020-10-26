@@ -22,12 +22,13 @@ class FollowersFragment(private val username: String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_followers, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        retainInstance = true
 
         showLoading(true)
 
@@ -41,7 +42,7 @@ class FollowersFragment(private val username: String) : Fragment() {
     private fun getFollowers(username: String) {
         val client = AsyncHttpClient()
         val url = "https://api.github.com/users/$username/followers"
-        client.addHeader("Authorization", "token 77003919eca2d2b24b3ff9036a5fa20eaabc1ca8 ")
+        client.addHeader("Authorization", "")
         client.addHeader("User-Agent", "request")
 
         client.get(url, object: AsyncHttpResponseHandler() {

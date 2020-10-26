@@ -1,9 +1,10 @@
 package com.example.githubuser
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
@@ -12,12 +13,26 @@ import kotlinx.android.synthetic.main.activity_detail.*
 import org.json.JSONObject
 
 class DetailActivity : AppCompatActivity() {
+
+    private var usernameForApi: String? = null
+    private var image: String? = null
+
+    companion object {
+        private const val SAVED_USERNAME = "username"
+        private const val SAVED_IMAGE = "image"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val usernameForApi = intent.getStringExtra("username") as String
-        val image = intent.getStringExtra("avatar")
+        usernameForApi = intent.getStringExtra("username")
+        image = intent.getStringExtra("avatar")
+
+        if(savedInstanceState != null) {
+            usernameForApi = savedInstanceState.getString(SAVED_USERNAME)
+            image = savedInstanceState.getString(SAVED_IMAGE)
+        }
 
         showLoading(true)
 
@@ -26,19 +41,28 @@ class DetailActivity : AppCompatActivity() {
             .load(image)
             .into(avatar)
 
-        getDetail(usernameForApi)
+        getDetail(usernameForApi!!)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager, usernameForApi)
+        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager, usernameForApi!!)
         view_pager.adapter = sectionsPagerAdapter
         tabs.setupWithViewPager(view_pager)
 
         supportActionBar?.elevation = 0f
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun getDetail(username: String) {
         val client = AsyncHttpClient()
         val url = "https://api.github.com/users/$username"
-        client.addHeader("Authorization", "token 77003919eca2d2b24b3ff9036a5fa20eaabc1ca8 ")
+        client.addHeader("Authorization", "")
         client.addHeader("User-Agent", "request")
 
         client.get(url, object: AsyncHttpResponseHandler() {
@@ -75,6 +99,12 @@ class DetailActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(SAVED_USERNAME, usernameForApi)
+        outState.putString(SAVED_IMAGE, image)
     }
 
     private fun showLoading(state: Boolean) {

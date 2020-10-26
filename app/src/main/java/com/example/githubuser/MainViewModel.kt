@@ -17,7 +17,7 @@ class MainViewModel : ViewModel() {
         val userList = ArrayList<User>()
 
         val client = AsyncHttpClient()
-        client.addHeader("Authorization", "token 77003919eca2d2b24b3ff9036a5fa20eaabc1ca8 ")
+        client.addHeader("Authorization", "")
         client.addHeader("User-Agent", "request")
 
         val url = "https://api.github.com/search/users?q=$username"
