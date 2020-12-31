@@ -8,6 +8,15 @@
         app:showAsAction="collapseActionView|always"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
     <item
+        android:id="@+id/favorite_page"
+        android:title="@string/favorite_users"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/set_reminder"
+        android:title="@string/reminder"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/change_lang"
         android:title="@string/change_lang"
         app:showAsAction="never"/>

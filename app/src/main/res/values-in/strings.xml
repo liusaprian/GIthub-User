@@ -14,4 +14,12 @@
     <string name="welcome_text">Hallooo\nTemui user lain dengan tekan menu cari…</string>
     <string name="load_failed">Gagal mengambil data</string>
     <string name="change_lang">Ganti pengaturan bahasa</string>
+    <string name="favorite_users">User Favorit</string>
+    <string name="reminder">Pengingat</string>
+    <string name="switch_reminder">switch_reminder</string>
+    <string name="no_favorite_users_at_the_moment">Tidak ada user favorit</string>
+    <string name="reminder_message">Temukan banyak user lainnya dalam komunitas Github</string>
+    <string name="reminder_on">Pengingat Hidup</string>
+    <string name="reminder_off">Pengingat Mati</string>
+    <string name="remind_at_nine">Pengingat jam 9 pagi</string>
 </resources>

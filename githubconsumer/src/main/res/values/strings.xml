@@ -1,0 +1,13 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Github Consumer</string>
+    <string name="company">Company</string>
+    <string name="repository">Repository</string>
+    <string name="location">Location</string>
+    <string name="tab_followers">Followers</string>
+    <string name="tab_following">Following</string>
+    <string name="avatar">Avatar</string>
+    <string name="no_following">No following</string>
+    <string name="no_followers">No followers</string>
+    <string name="favorite_users">Favorite Users</string>
+    <string name="no_favorite_users_at_the_moment">No favorite users at the moment</string>
+</resources>

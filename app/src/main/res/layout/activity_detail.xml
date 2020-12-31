@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".DetailActivity">
+    tools:context=".view.detail.DetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,6 +36,7 @@
                 android:layout_marginBottom="16dp"
                 android:paddingHorizontal="8dp"
                 tools:text="Name"
+                android:textColor="@android:color/white"
                 android:textSize="24sp"/>
 
             <ProgressBar
@@ -46,6 +46,16 @@
                 android:layout_gravity="center"
                 android:indeterminateTint="@color/colorPrimary"
                 android:visibility="gone"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fav_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:src="@drawable/ic_baseline_favorite_border_24"
+                android:backgroundTint="@color/colorPrimary" />
 
         </FrameLayout>
 
@@ -69,10 +79,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/company"
-                android:background="@drawable/view_border"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:paddingVertical="4dp"
                 android:gravity="center"/>
 
@@ -81,10 +90,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/repository"
-                android:background="@drawable/view_border"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:paddingVertical="4dp"
                 android:gravity="center"/>
 
@@ -93,10 +101,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/location"
-                android:background="@drawable/view_border"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:paddingVertical="4dp"
                 android:gravity="center"/>
 

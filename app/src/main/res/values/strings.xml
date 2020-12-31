@@ -13,4 +13,12 @@
     <string name="welcome_text">Welcome\nTap search button to find other users…</string>
     <string name="load_failed">Loading data failed</string>
     <string name="change_lang">Change language settings</string>
+    <string name="favorite_users">Favorite Users</string>
+    <string name="reminder">Reminder</string>
+    <string name="switch_reminder">switch_reminder</string>
+    <string name="no_favorite_users_at_the_moment">No favorite users at the moment</string>
+    <string name="reminder_message">Find many other users across Github community</string>
+    <string name="reminder_on">Reminder On</string>
+    <string name="reminder_off">Reminder Off</string>
+    <string name="remind_at_nine">Reminder at 9 AM</string>
 </resources>
